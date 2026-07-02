@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Personal Page</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", "Noto Sans KR", sans-serif;
+      background-color: #f7f8fa;
+      color: #24292f;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* 왼쪽 사이드바 */
+    .sidebar {
+      width: 300px;
+      background-color: #ffffff;
+      border-right: 1px solid #e5e7eb;
+      padding: 45px 38px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    .profile {
+      text-align: center;
+    }
+
+    .profile-img {
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13);
+    }
+
+    .profile h2 {
+      font-size: 28px;
+      margin-bottom: 18px;
+      font-weight: 800;
+    }
+
+    .profile p {
+      color: #6b7280;
+      font-size: 15px;
+      line-height: 1.65;
+      letter-spacing: 0.2px;
+    }
+
+    .contact {
+      margin-top: 48px;
+      color: #6b7280;
+      font-size: 15px;
+      line-height: 2.6;
+    }
+
+    .contact div {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .side-line {
+      margin: 55px 0 28px;
+      border: none;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .nav a {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+      color: #6b7280;
+      padding: 15px 18px;
+      border-radius: 7px;
+      margin-bottom: 11px;
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .nav a.active {
+      background-color: #4f75f2;
+      color: white;
+    }
+
+    .nav a:hover {
+      background-color: #eef2ff;
+      color: #4f75f2;
+    }
+
+    .nav a.active:hover {
+      background-color: #4f75f2;
+      color: white;
+    }
+
+    /* 오른쪽 메인 */
+    .main {
+      margin-left: 300px;
+      width: calc(100% - 300px);
+      padding: 58px 85px;
+    }
+
+    .hero {
+      display: flex;
+      gap: 25px;
+      align-items: flex-start;
+      margin-bottom: 42px;
+    }
+
+    .hero-line {
+      width: 4px;
+      height: 138px;
+      background-color: #5b7cff;
+    }
+
+    .hero h1 {
+      font-size: 39px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      color: #6b7280;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+
+    .hero strong {
+      color: #5f6673;
+    }
+
+    /* 아코디언 */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    details {
+      background-color: white;
+      border: 1px solid #e1e4e8;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    summary {
+      list-style: none;
+      height: 92px;
+      padding: 0 30px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      font-size: 29px;
+      font-weight: 800;
+      gap: 19px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .summary-title {
+      flex: 1;
+    }
+
+    .arrow {
+      font-size: 34px;
+      font-weight: 300;
+      transition: transform 0.2s;
+    }
+
+    details[open] .arrow {
+      transform: rotate(90deg);
+    }
+
+    .details-content {
+      border-top: 1px solid #e5e7eb;
+      padding: 30px;
+    }
+
+    .category-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .project-card {
+      min-height: 104px;
+      border: 1px solid #e1e4e8;
+      border-radius: 7px;
+      padding: 25px 22px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.55;
+      text-decoration: none;
+      color: #24292f;
+      transition: 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      border-color: #4f75f2;
+      color: #4f75f2;
+    }
+
+    .about-text {
+      font-size: 17px;
+      color: #4b5563;
+      line-height: 1.9;
+    }
+
+    .study-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .study-card {
+      border: 1px solid #e1e4e8;
+      border-radius: 7px;
+      padding: 22px;
+      font-size: 18px;
+      font-weight: 700;
+      background-color: #fff;
+    }
+
+    @media (max-width: 1000px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+      }
+
+      .container {
+        display: block;
+      }
+
+      .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 40px 25px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .study-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- 왼쪽 프로필 영역 -->
+    <aside class="sidebar">
+      <div class="profile">
+        <!-- 프로필 사진 파일명을 profile.jpg로 올리면 자동 적용됨 -->
+        <img src="profile.jpg" alt="profile image" class="profile-img" />
+
+        <h2>주진호</h2>
+        <p>
+          Department of Electrical and<br />
+          Electronic Engineering, Konkuk<br />
+          University
+        </p>
+      </div>
+
+      <div class="contact">
+        <div>📍 <span>Seoul</span></div>
+        <div>✉️ <span>jinhoandy1106@naver.com</span></div>
+      </div>
+
+      <hr class="side-line" />
+
+      <nav class="nav">
+        <a href="#about">👤 <span>About Me</span></a>
+        <a href="#project">💡 <span>Project</span></a>
+        <a href="#study" class="active">📖 <span>Study</span></a>
+      </nav>
+    </aside>
+
+    <!-- 오른쪽 본문 영역 -->
+    <main class="main">
+
+      <section class="hero">
+        <div class="hero-line"></div>
+        <div>
+          <h1>Welcome To My Personal Page :)</h1>
+          <p><strong>(About Me)</strong> 학문적 배경과 연구 관심 분야에 대한 소개입니다.</p>
+          <p><strong>(Project)</strong> 지금까지 진행한 프로젝트 및 스터디, 세미나 자료입니다.</p>
+          <p><strong>(Study)</strong> 수업 내용을 바탕으로 개인적으로 정리한 Notion 페이지입니다.</p>
+        </div>
+      </section>
+
+      <section class="accordion">
+
+        <!-- About Me -->
+        <details id="about">
+          <summary>
+            <span>👤</span>
+            <span class="summary-title">About Me</span>
+            <span class="arrow">›</span>
+          </summary>
+
+          <div class="details-content">
+            <p class="about-text">
+              안녕하세요. 저는 건국대학교 전기전자공학부에서 공부하며
+              디지털 회로 설계, 컴퓨터 구조, 임베디드 시스템, AI 가속기 분야에 관심을 가지고 있습니다.
+            </p>
+          </div>
+        </details>
+
+        <!-- Project -->
+        <details id="project" open>
+          <summary>
+            <span>🚀</span>
+            <span class="summary-title">Project</span>
+            <span class="arrow">›</span>
+          </summary>
+
+          <div class="details-content">
+            <h3 class="category-title">Digital Circuit Design:</h3>
+
+            <div class="project-grid">
+              <a class="project-card" href="#">
+                Hardware Accelerator for Tiny Neural Networks
+              </a>
+
+              <a class="project-card" href="#">
+                Hierarchical ASIC Full Flow Design & Verification
+              </a>
+
+              <a class="project-card" href="#">
+                RISC-V CPU Design
+              </a>
+
+              <a class="project-card" href="#">
+                Partitioning and Placement on Multi-core NoC Architecture
+              </a>
+
+              <a class="project-card" href="#">
+                64pt FFT Accelerator with RISC-V
+              </a>
+
+              <a class="project-card" href="#">
+                128-point FFT on Xilinx Zynq-7000
+              </a>
+            </div>
+
+            <h3 class="category-title">Embedded System:</h3>
+
+            <div class="project-grid">
+              <a class="project-card" href="#">
+                Tiny CPU Pipeline Design
+              </a>
+
+              <a class="project-card" href="#">
+                CNN Address Generator Optimization
+              </a>
+
+              <a class="project-card" href="#">
+                Systolic Array Design
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <!-- Study -->
+        <details id="study">
+          <summary>
+            <span>📖</span>
+            <span class="summary-title">Study</span>
+            <span class="arrow">›</span>
+          </summary>
+
+          <div class="details-content">
+            <div class="study-list">
+              <div class="study-card">Computer Architecture</div>
+              <div class="study-card">Digital CMOS</div>
+              <div class="study-card">Embedded Data Structure</div>
+              <div class="study-card">AI Accelerator Design</div>
+            </div>
+          </div>
+        </details>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>
