@@ -362,61 +362,146 @@
               </a>
 
               <a class="project-card" href="#">
-                Hierarchical ASIC Full Flow Design & Verification
+                16-bit tiny microprocessor
               </a>
 
               <a class="project-card" href="#">
-                RISC-V CPU Design
+                CNN Adrress Generator Optimization with RISC-V
               </a>
 
               <a class="project-card" href="#">
                 Partitioning and Placement on Multi-core NoC Architecture
               </a>
 
-              <a class="project-card" href="#">
-                64pt FFT Accelerator with RISC-V
-              </a>
-
-              <a class="project-card" href="#">
-                128-point FFT on Xilinx Zynq-7000
-              </a>
-            </div>
-
             <h3 class="category-title">Embedded System:</h3>
 
             <div class="project-grid">
               <a class="project-card" href="#">
-                Tiny CPU Pipeline Design
+                Stack-Based Connected Component Labeling
               </a>
 
               <a class="project-card" href="#">
-                CNN Address Generator Optimization
+                Median Filter-Based Noise Reduction
               </a>
 
               <a class="project-card" href="#">
-                Systolic Array Design
+                Generic Linked List for String Data Management
               </a>
             </div>
           </div>
         </details>
 
-        <!-- Study -->
-        <details id="study">
-          <summary>
-            <span>📖</span>
-            <span class="summary-title">Study</span>
-            <span class="arrow">›</span>
-          </summary>
+        <style>
+  .study-content {
+    padding: 36px 32px 34px;
+  }
 
-          <div class="details-content">
-            <div class="study-list">
-              <div class="study-card">Computer Architecture</div>
-              <div class="study-card">Digital CMOS</div>
-              <div class="study-card">Embedded Data Structure</div>
-              <div class="study-card">AI Accelerator Design</div>
-            </div>
-          </div>
-        </details>
+  .semester-section {
+    margin-bottom: 34px;
+  }
+
+  .semester-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .semester-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #24292f;
+  }
+
+  .course-grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .course-grid.columns-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .course-grid.columns-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .course-card {
+    min-height: 92px;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 28px 30px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #24292f;
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.5;
+    transition: 0.2s;
+  }
+
+  .course-card:visited {
+    color: #24292f;
+  }
+
+  .course-card:hover {
+    transform: translateY(-3px);
+    border-color: #4f75f2;
+    color: #4f75f2;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  @media (max-width: 1000px) {
+    .course-grid.columns-2,
+    .course-grid.columns-3 {
+      grid-template-columns: 1fr;
+    }
+
+    .course-card {
+      font-size: 18px;
+    }
+  }
+</style>
+
+<!-- Study -->
+<details id="study" open>
+  <summary>
+    <span>▦</span>
+    <span class="summary-title">Study</span>
+    <span class="arrow">›</span>
+  </summary>
+
+  <div class="details-content study-content">
+
+    <div class="semester-section">
+      <h3 class="semester-title">3-1:</h3>
+      <div class="course-grid columns-3">
+        <a class="course-card" href="#">AI가속기설계</a>
+        <a class="course-card" href="#">마이크로프로세서응용</a>
+        <a class="course-card" href="#">전자회로2</a>
+      </div>
+    </div>
+
+    <div class="semester-section">
+      <h3 class="semester-title">2-2:</h3>
+      <div class="course-grid columns-2">
+        <a class="course-card" href="#">전자회로1</a>
+        <a class="course-card" href="#">컴퓨터구조</a>
+      </div>
+    </div>
+
+    <div class="semester-section">
+      <h3 class="semester-title">2-1:</h3>
+      <div class="course-grid columns-2">
+        <a class="course-card" href="#">논리회로</a>
+        <a class="course-card" href="#">컴퓨터프로그래밍2</a>
+      </div>
+    </div>
+
+  </div>
+</details>
 
       </section>
     </main>
